@@ -18,3 +18,19 @@ jobs:
         - name: test_ros2_sanity
           run: "pixi run test-ros2"
   
+  test-yamcs:
+    type: test
+    timeout: 15 # minutes
+    package:
+      docker:
+        build:
+          dockerfile: ci.docker/Dockerfile
+    runtime:
+      framework: other
+      simulator: isaacsim
+      
+    scenarios:
+      settings:
+        - name: test_yamcs_sanity
+          run: "pixi run test-yamcs"
+  
