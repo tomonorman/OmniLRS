@@ -19,7 +19,16 @@ docker build -t omnilrs . -f ci.docker/Dockerfile
 
 ## Run tests with regular pytest
 
-Comment out L13 of Dockerfile, replacing with L12
+Your `CMD` line Dockerfile should run either:
+
+```
+CMD ["pixi", "run", "test-ros2"]
+```
+or
+```
+CMD ["pixi", "run", "test-yamcs"]
+```
+Then run the container with:
 ```
 docker run --gpus all omnilrs   
 ```
@@ -29,5 +38,6 @@ docker run --gpus all omnilrs
 You will need `artefacts` already setup on your machine
 Comment out L12 Dockerfile, replacing with L13
 ```
-artefacts run --in-container test-ros2 --dockerfile ci.docker/Dockerfile --gpus=all
+artefacts run --in-container test-startup --dockerfile ci.docker/Dockerfile --gpus=all
 ```
+Both the ros2 and the yamcs tests will run.
