@@ -17,6 +17,11 @@ SIM_COMMAND = [
     "ros2",
     "ros2",
     "rendering.renderer.headless=True",
+    # Artefats runs crash on platform as runner has two nvidia manifests,
+    # confusing Isaac to think it has two GPUS.
+    # Disable multi-GPU and pin the device.
+    "rendering.renderer.multi_gpu=false",
+    "rendering.renderer.active_gpu=0",
 ]
 
 # The last startup message to appear; once seen, startup is complete.

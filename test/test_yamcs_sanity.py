@@ -28,6 +28,11 @@ SIM_COMMAND = [
     "yamcs",
     "yamcs",
     "rendering.renderer.headless=true",
+    # CI hosts inject duplicate NVIDIA Vulkan ICDs, making one GPU enumerate
+    # twice; Kit crashes in multi-GPU mode (Vulkan loader env overrides are
+    # ignored by gpu.foundation). Disable multi-GPU and pin the device.
+    "rendering.renderer.multi_gpu=false",
+    "rendering.renderer.active_gpu=0",
 ]
 
 # The last startup message to appear; once seen, startup is complete.

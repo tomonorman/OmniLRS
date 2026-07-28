@@ -37,6 +37,9 @@ def _nvidia_icds(directory):
     return sorted(p for p in directory.glob("*.json") if "nvidia" in p.name.lower())
 
 
+def test_this_just_passes():
+    assert 1 + 1 == 2, "This test is just a placeholder to make pytest happy."
+
 def test_no_duplicate_nvidia_vulkan_icds():
     report_path = _log_dir() / "vulkan_icd_report.txt"
     found = {}
