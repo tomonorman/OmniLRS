@@ -1,0 +1,7 @@
+.github/
+.pixi/
+.ruff_cache/
+docs/
+omnilrs.docker/
+spaceros_demo.docker/
+assets/

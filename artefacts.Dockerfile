@@ -1,5 +1,12 @@
-ARG BASE_IMAGE=omnilrs-base:latest
-FROM ${BASE_IMAGE}
+FROM tomolnorman/omnilrs-ci-base:0.2.0
+
+# Cloud runner hosts (Amazon Linux) inject two NVIDIA Vulkan ICD manifests
+# (nvidia_icd.json + nvidia_icd.x86_64.json) for the same driver, making one
+# GPU enumerate twice and crashing Kit in multi-GPU mode. Pin the loader to a
+# single manifest. Ubuntu 22.04 ships Vulkan loader 1.3.204, which predates
+# VK_DRIVER_FILES (added in 1.3.207) and only honors the legacy name, so set both.
+ENV VK_DRIVER_FILES=/etc/vulkan/icd.d/nvidia_icd.json
+ENV VK_ICD_FILENAMES=/etc/vulkan/icd.d/nvidia_icd.json
 
 WORKDIR /workspace/omnilrs
 

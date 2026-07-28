@@ -8,7 +8,7 @@ jobs:
     package:
       docker:
         build:
-          dockerfile: ci.docker/Dockerfile
+          dockerfile: ./artefacts.Dockerfile
     runtime:
       framework: other
       simulator: isaacsim
@@ -19,5 +19,21 @@ jobs:
           run: "pixi run test-ros2"
         - name: test_yamcs_sanity
           run: "pixi run test-yamcs"
+  
+  test-vulkan:
+    type: test
+    timeout: 15 # minutes
+    package:
+      docker:
+        build:
+          dockerfile: ./artefacts.Dockerfile
+    runtime:
+      framework: other
+      simulator: isaacsim
+      
+    scenarios:
+      settings:
+        - name: test_vulkan_icd
+          run: "pixi run test-vulkan-icd"
 
   
