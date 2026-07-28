@@ -38,6 +38,7 @@ FATAL_MARKERS = [
     "Error executing job",
     "ModuleNotFoundError",
     "is not available in environment",
+    "carb.crashreporter-breakpad",
 ]
 
 

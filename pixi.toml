@@ -88,6 +88,7 @@ yamcs-client = "*"
 [feature.test-sim.tasks]
 test-ros2 = "pytest -v -s test/test_ros2_sanity.py"
 test-yamcs = "pytest -v -s test/test_yamcs_sanity.py"
+test-vulkan-icd = "pytest -v -s test/test_vulkan_icd.py"
 
 [environments]
 default = { features = ["core", "isaac"] }

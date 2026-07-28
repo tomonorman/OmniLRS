@@ -27,6 +27,7 @@ FATAL_MARKERS = [
     "Error executing job",
     "ModuleNotFoundError",
     "ROS2 Bridge startup failed",
+    "carb.crashreporter-breakpad",
 ]
 
 
