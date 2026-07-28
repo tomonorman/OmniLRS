@@ -61,12 +61,23 @@ def test_no_duplicate_nvidia_vulkan_icds():
                     except OSError as exc:
                         report.write(f"    (unreadable: {exc})\n")
 
-    dirs_with_nvidia = [str(d) for d, icds in found.items() if icds]
-    print(f"NVIDIA ICDs found in: {dirs_with_nvidia or 'none'} (see {report_path.name})")
+    all_icds = [str(p) for icds in found.values() for p in icds]
+    print(f"NVIDIA ICDs found: {all_icds or 'none'} (see {report_path.name})")
 
-    assert len(dirs_with_nvidia) <= 1, (
-        "Duplicate NVIDIA Vulkan ICDs found in "
-        f"{dirs_with_nvidia}. The same GPU will be enumerated once per ICD, which "
-        "crashes Kit in multi-GPU mode. Remove the /usr/share/vulkan/icd.d copy "
+    # A VK_DRIVER_FILES / VK_ICD_FILENAMES override pins the loader to a single
+    # manifest, making extra manifests on disk harmless.
+    override = os.environ.get("VK_ICD_FILENAMES") or os.environ.get("VK_DRIVER_FILES")
+    if override:
+        assert Path(override).is_file(), (
+            f"Vulkan ICD override points to a missing file: {override}. The loader "
+            "will find no NVIDIA driver at all. Check which manifest names the "
+            f"runner injects (see {report_path.name})."
+        )
+        return
+
+    assert len(all_icds) <= 1, (
+        f"Duplicate NVIDIA Vulkan ICDs found: {all_icds}. The same GPU will be "
+        "enumerated once per manifest, which crashes Kit in multi-GPU mode. Pin "
+        "one manifest via VK_ICD_FILENAMES/VK_DRIVER_FILES or remove the extras "
         f"(see {report_path.name} for the full listing)."
     )
