@@ -41,8 +41,6 @@ def test_no_duplicate_nvidia_vulkan_icds():
     report_path = _log_dir() / "vulkan_icd_report.txt"
     found = {}
     with open(report_path, "w") as report:
-        # Loader override env vars: VK_ICD_FILENAMES is the legacy name honored
-        # by old loaders (e.g. 1.3.204 on Ubuntu 22.04); VK_DRIVER_FILES needs >= 1.3.207.
         for var in ("VK_DRIVER_FILES", "VK_ICD_FILENAMES", "VK_ADD_DRIVER_FILES"):
             report.write(f"{var}={os.environ.get(var, '(unset)')}\n")
         loader = subprocess.run(
