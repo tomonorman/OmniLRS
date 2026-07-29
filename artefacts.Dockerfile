@@ -1,4 +1,4 @@
-FROM tomolnorman/omnilrs-ci-base:0.3.0
+FROM public.ecr.aws/v5u1t9u5/jaops-omnilrs:omni-ci-0.1.0
 
 WORKDIR /workspace/omnilrs
 
