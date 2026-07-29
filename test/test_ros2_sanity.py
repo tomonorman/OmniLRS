@@ -10,19 +10,6 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parents[1]
 STARTUP_TIMEOUT = int(os.environ.get("OMNILRS_TEST_TIMEOUT", "600"))
 
-SIM_COMMAND = [
-    "pixi",
-    "run",
-    "-e",
-    "ros2",
-    "ros2",
-    "rendering.renderer.headless=True",
-    # Artefats runs crash on platform as runner has two nvidia manifests,
-    # confusing Isaac to think it has two GPUS.
-    # Disable multi-GPU and pin the device.
-    "rendering.renderer.multi_gpu=false",
-    "rendering.renderer.active_gpu=0",
-]
 
 # The last startup message to appear; once seen, startup is complete.
 FINAL_MARKER = "ArticulationTelemetry initialized"
