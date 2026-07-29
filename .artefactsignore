@@ -5,3 +5,4 @@ docs/
 omnilrs.docker/
 spaceros_demo.docker/
 assets/
+test/venv

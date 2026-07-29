@@ -1,4 +1,4 @@
-project: artefacts/omnilrs
+project: artefacts/omni-tests
 version: 0.1.0
 
 jobs:
@@ -35,5 +35,35 @@ jobs:
       settings:
         - name: test_vulkan_icd
           run: "pixi run test-vulkan-icd"
-
   
+  test-ros2:
+    type: test
+    timeout: 15 # minutes
+    package:
+      docker:
+        build:
+          dockerfile: ./artefacts.Dockerfile
+    runtime:
+      framework: other
+      simulator: isaacsim
+      
+    scenarios:
+      settings:
+        - name: test_ros2_sanity
+          run: "pixi run test-ros2"
+
+  test-yamcs:
+    type: test
+    timeout: 15 # minutes
+    package:
+      docker:
+        build:
+          dockerfile: ./artefacts.Dockerfile
+    runtime:
+      framework: other
+      simulator: isaacsim
+      
+    scenarios:
+      settings:
+        - name: test_yamcs_sanity
+          run: "pixi run test-yamcs"  
