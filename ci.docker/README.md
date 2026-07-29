@@ -1,6 +1,6 @@
 # Dockerfiles for CI testing (with artefacts)
 
-This folder contains two dockerfiles
+This folder contains the base image for CI testing. The main app image is at the root of the repository named `artefacts.Dockerfile`
 
 1. A base image for all deps and initial pixi install
 2. The app image which redoes pixi install (fast, as only code changes)
