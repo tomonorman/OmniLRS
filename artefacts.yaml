@@ -1,4 +1,4 @@
-project: artefacts/omnilrs
+project: artefacts/omni-tests
 version: 0.1.0
 
 jobs:

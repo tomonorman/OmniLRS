@@ -7,14 +7,9 @@ This folder contains two dockerfiles
 
 ## Build
 
-Build the base image with 
-```
-docker build -t omnilrs-base -f ci.docker/Dockerfile.base .
-```
-
 Build the app image with
 ```
-docker build -t omnilrs . -f ci.docker/Dockerfile  
+docker build -t omnilrs . -f artefacts.Dockerfile  
 ```
 
 ## Run tests with regular pytest
@@ -29,5 +24,9 @@ docker run --gpus all omnilrs
 You will need `artefacts` already setup on your machine
 Comment out L12 Dockerfile, replacing with L13
 ```
-artefacts run --in-container test-ros2 --dockerfile ci.docker/Dockerfile --gpus=all
+artefacts run --in-container test-ros2 --dockerfile artefacts.Dockerfile --gpus=all
 ```
+
+## Notes for Building the Base Image
+
+If you wish to build the base image (`Dockerfile.base`) yourself, note that assets (git lfs) and git submodules must already be available on the machine you are building on.
