@@ -24,3 +24,6 @@ COPY pixi.toml pixi.lock pyproject.toml ./
 COPY scripts ./scripts
 RUN mkdir -p src && touch src/__init__.py
 RUN pixi install --all
+
+# Bake large assets (from git lfs)
+COPY assets ./assets
