@@ -21,6 +21,4 @@ COPY . .
 # Fast revalidation: no-op if the manifests match the base image,
 RUN pixi install --all
 
-# Run tests, comment as appropiate for artefacts / directly.
-#CMD ["pixi", "run", "test-ros2"]
 CMD artefacts run $ARTEFACTS_JOB_NAME
