@@ -1,4 +1,4 @@
-FROM public.ecr.aws/v5u1t9u5/jaops-omnilrs:omni-ci-0.1.0
+FROM public.ecr.aws/v5u1t9u5/jaops-omnilrs:omni-ci-0.2.0
 
 WORKDIR /workspace/omnilrs
 
@@ -18,7 +18,7 @@ RUN git clone --depth 1 https://github.com/OmniLRS/yamcs-mission-control-pragyaa
 
 COPY . .
 
-# Fast revalidation: no-op if the manifests match the base image,
-RUN pixi install --all
+# Fast revalidation: no-op if manifests match the base image, fails on lockfile drift
+RUN pixi install --locked -e ci -e test-sim
 
 CMD artefacts run $ARTEFACTS_JOB_NAME
