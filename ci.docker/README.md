@@ -14,15 +14,14 @@ docker build -t omnilrs . -f artefacts.Dockerfile
 
 ## Running tests
 
-Tests can be ran with the `CMD` line of `artefacts.dockerfile` being either
+1. Using 'artefacts'
 ```
-CMD ["pixi", "run", "test-ros2"] # pytest
-CMD artefacts run $ARTEFACTS_JOB_NAME # with artefacts
+artefacts run --in-container test-ros2 --dockerfile artefacts.Dockerfile --gpus=all
 ```
-and can be ran from the command line with:
+
+2. With Pytest override the command from the command line
 ```
-docker run --gpus all omnilrs  # pytest
-artefacts run --in-container test-ros2 --dockerfile artefacts.Dockerfile --gpus=all # artefacts
+docker run --gpus all --rm omnilrs pixi run test-ros2
 ```
 
 ## Notes for Building the Base Image
