@@ -14,7 +14,7 @@ SIM_COMMAND = [
     "pixi",
     "run",
     "-e",
-    "ros2",
+    "ci",
     "ros2",
     "rendering.renderer.headless=True",
 ]
