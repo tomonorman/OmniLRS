@@ -12,30 +12,17 @@ Build the app image with
 docker build -t omnilrs . -f artefacts.Dockerfile  
 ```
 
-## Run tests with regular pytest
+## Running tests
 
-Your `CMD` line Dockerfile should run either:
-
+1. Using 'artefacts'
 ```
-CMD ["pixi", "run", "test-ros2"]
-```
-or
-```
-CMD ["pixi", "run", "test-yamcs"]
-```
-Then run the container with:
-```
-docker run --gpus all omnilrs   
+artefacts run --in-container test-ros2 --dockerfile artefacts.Dockerfile --gpus=all
 ```
 
-## Run tests with artefacts
-
-You will need `artefacts` already setup on your machine
-Comment out L12 Dockerfile, replacing with L13
+2. With Pytest override the command from the command line
 ```
-artefacts run --in-container test-startup --dockerfile ci.docker/Dockerfile --gpus=all
+docker run --gpus all --rm omnilrs pixi run test-ros2
 ```
-Both the ros2 and the yamcs tests will run.
 
 ## Notes for Building the Base Image
 

@@ -23,7 +23,8 @@ WORKDIR /workspace/omnilrs
 COPY pixi.toml pixi.lock pyproject.toml ./
 COPY scripts ./scripts
 RUN mkdir -p src && touch src/__init__.py
-RUN pixi install --all
+RUN pixi install --locked -e ci -e test-sim \
+    && pixi clean cache --yes
 
 # Bake large assets (from git lfs)
 COPY assets ./assets

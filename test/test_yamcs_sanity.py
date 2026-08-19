@@ -25,7 +25,7 @@ SIM_COMMAND = [
     "pixi",
     "run",
     "--environment",
-    "yamcs",
+    "ci",
     "yamcs",
     "rendering.renderer.headless=true",
     # CI hosts inject duplicate NVIDIA Vulkan ICDs, making one GPU enumerate
