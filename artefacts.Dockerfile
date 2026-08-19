@@ -1,4 +1,4 @@
-FROM public.ecr.aws/v5u1t9u5/jaops-omnilrs:omni-ci-0.2.0
+FROM public.ecr.aws/jaops/jaops-omnilrs:omni-ci-0.2.0
 
 WORKDIR /workspace/omnilrs
 
