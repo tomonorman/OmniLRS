@@ -1,5 +1,4 @@
-ARG BASE_IMAGE=omnilrs-base:latest
-FROM ${BASE_IMAGE}
+FROM public.ecr.aws/jaops/jaops-omnilrs:omni-ci-0.2.0
 
 WORKDIR /workspace/omnilrs
 
@@ -19,9 +18,7 @@ RUN git clone --depth 1 https://github.com/OmniLRS/yamcs-mission-control-pragyaa
 
 COPY . .
 
-# Fast revalidation: no-op if the manifests match the base image,
-RUN pixi install --all
+# Fast revalidation: no-op if manifests match the base image, fails on lockfile drift
+RUN pixi install --locked -e ci -e test-sim
 
-# Run tests, comment as appropiate for artefacts / directly.
-#CMD ["pixi", "run", "test-ros2"]
 CMD artefacts run $ARTEFACTS_JOB_NAME

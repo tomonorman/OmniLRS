@@ -94,3 +94,4 @@ default = { features = ["core", "isaac"] }
 yamcs = { features = ["core", "isaac", "yamcs"] }
 ros2 = { features = ["core", "isaac", "ros2"] }
 test-sim = { features = ["test-sim"] }
+ci = { features = ["core", "isaac", "ros2", "yamcs"] }

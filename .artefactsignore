@@ -1,6 +1,5 @@
 .pixi
 .git
-*.docker
 docs
 
 # Ignore hidden thumbnail/cache files that can have restrictive permissions.
