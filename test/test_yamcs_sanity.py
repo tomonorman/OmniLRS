@@ -25,7 +25,7 @@ SIM_COMMAND = [
     "pixi",
     "run",
     "--environment",
-    "yamcs",
+    "ci",
     "yamcs",
     "rendering.renderer.headless=true",
 ]
