@@ -21,7 +21,7 @@ artefacts run --in-container test-ros2 --dockerfile artefacts.Dockerfile --gpus=
 
 2. With Pytest override the command from the command line
 ```
-docker run --gpus all --rm omnilrs pixi run test-ros2
+docker run --gpus all --rm omnilrs pixi run test-ros2 # test-yamcs
 ```
 
 ## Notes for Building the Base Image
