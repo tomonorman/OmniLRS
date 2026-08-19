@@ -28,9 +28,9 @@ SIM_COMMAND = [
     "ci",
     "yamcs",
     "rendering.renderer.headless=true",
-    # CI hosts inject duplicate NVIDIA Vulkan ICDs, making one GPU enumerate
-    # twice; Kit crashes in multi-GPU mode (Vulkan loader env overrides are
-    # ignored by gpu.foundation). Disable multi-GPU and pin the device.
+    # For some reason AWS EKS AMI's duplicate NVIDIA Vulkan ICDs, making one GPU enumerate
+    # causing Isaac to think there are two gpus available and then die.
+    # Disable and pin.
     "rendering.renderer.multi_gpu=false",
     "rendering.renderer.active_gpu=0",
 ]
