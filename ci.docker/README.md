@@ -16,12 +16,12 @@ docker build -t omnilrs . -f artefacts.Dockerfile
 
 1. Using 'artefacts'
 ```
-artefacts run --in-container test-ros2 --dockerfile artefacts.Dockerfile --gpus=all
+artefacts run --in-container test-startup --dockerfile artefacts.Dockerfile --gpus=all
 ```
 
 2. With Pytest override the command from the command line
 ```
-docker run --gpus all --rm omnilrs pixi run test-ros2 # test-yamcs
+docker run --gpus all --rm omnilrs pixi run test-startup
 ```
 
 ## Notes for Building the Base Image
