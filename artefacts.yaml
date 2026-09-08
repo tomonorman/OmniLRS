@@ -2,7 +2,7 @@ project: omnilrs/omni-tests
 version: 0.1.0
 
 jobs:
-  test-ros2:
+  test-startup:
     type: test
     timeout: 15 # minutes
     package:
@@ -17,4 +17,7 @@ jobs:
       settings:
         - name: test_ros2_sanity
           run: "pixi run test-ros2"
+        - name: test_yamcs_sanity
+          run: "pixi run test-yamcs"
+
   
