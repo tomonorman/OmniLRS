@@ -21,9 +21,9 @@ artefacts run --in-container test-startup --dockerfile artefacts.Dockerfile --gp
 
 2. With Pytest override the command from the command line
 ```
-docker run --gpus all --rm omnilrs pixi run test-startup
+docker run --gpus all --rm omnilrs pixi run test-ros2 # or test-yamcs
 ```
 
 ## Notes for Building the Base Image
 
-If you wish to build the base image (`Dockerfile.base`) yourself, note that assets (git lfs) and git submodules must already be available on the machine you are building on.
+If you wish to build the base image (`ci.Dockerfile`) yourself, note that assets (git lfs) and git submodules must already be available on the machine you are building on.

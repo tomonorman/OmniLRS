@@ -36,7 +36,9 @@ assets/Terrains/SouthPole/*
 # landscape_cropped is large and unused in CI
 assets/Terrains/landscape_cropped
 
-# Lander models: keep only the ispace lander
+# Lander models: keep only the ispace and Vikram landers
 assets/USD_Assets/common/lander/*
 !assets/USD_Assets/common/lander/ispace_ultra
 !assets/USD_Assets/common/lander/ispace_ultra/**
+!assets/USD_Assets/common/lander/Vikram
+!assets/USD_Assets/common/lander/Vikram/**
